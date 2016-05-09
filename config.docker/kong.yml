@@ -88,7 +88,7 @@ nginx: |
     server {
       server_name _;
       listen {{proxy_listen}};
-      listen {{proxy_listen_ssl}} ssl;
+      listen {{proxy_listen_ssl}} ssl proxy_protocol;
 
       ssl_certificate_by_lua_block {
         kong.ssl_certificate()
