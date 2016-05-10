@@ -11,8 +11,8 @@ cassandra:
 #  user: cassandra
 #  password: cassandra
 cluster_listen: "0.0.0.0:7946"
-# ssl_cert_path: /usr/local/kong/ssl/server.pem
-# ssl_key_path: /usr/local/kong/ssl/server.key
+ssl_cert_path: /usr/local/kong/ssl/server.pem
+ssl_key_path: /usr/local/kong/ssl/server.key
 nginx: |
   {{user}}
   worker_processes auto;
