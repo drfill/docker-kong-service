@@ -55,8 +55,8 @@ fi
 if [ -n "$SSL_CERT" ]; then
   mkdir -p /usr/local/kong/ssl/
   
-  echo -e $SSL_CERT >> /usr/local/kong/ssl/server.crt
-  echo -e $SSL_KEY >> /usr/local/kong/ssl/server.key
+  echo -e $SSL_CERT > /usr/local/kong/ssl/server.pem
+  echo -e $SSL_KEY > /usr/local/kong/ssl/server.key
 
   sed -ie "s/#  ssl_cert_path:/ssl_cert_path/" /etc/kong/kong.yml
   sed -ie "s/#  ssl_key_path:/ssl_key_path/" /etc/kong/kong.yml
