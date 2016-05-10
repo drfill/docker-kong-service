@@ -49,3 +49,15 @@ if [ -n "$CLUSTER_LISTEN" ]; then
   fi
   sed -ie "s/cluster_listen: \"0.0.0.0:7946\"/cluster_listen: \"$CLUSTER_LISTEN\"/" /etc/kong/kong.yml
 fi
+
+# SSL
+
+if [ -n "$SSL_CERT" ]; then
+  mkdir -p /usr/local/kong/ssl/
+  
+  echo -e $SSL_CERT >> /usr/local/kong/ssl/server.crt
+  echo -e $SSL_KEY >> /usr/local/kong/ssl/server.key
+
+  sed -ie "s/#  ssl_cert_path:/ssl_cert_path/" /etc/kong/kong.yml
+  sed -ie "s/#  ssl_key_path:/ssl_key_path/" /etc/kong/kong.yml
+fi
